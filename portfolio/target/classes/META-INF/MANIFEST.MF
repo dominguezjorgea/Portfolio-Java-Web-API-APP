@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: portfolio-java-web-app
+Implementation-Version: 1.0
+Built-By: Jorge A. Dominguez M
+Implementation-Vendor-Id: com.zem.jorge
+Build-Jdk: 1.8.0_152
+Implementation-URL: http://persapiens.org/portfolio
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: JoinFaces
+

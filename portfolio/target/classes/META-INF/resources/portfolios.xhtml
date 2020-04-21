@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>PORTFOLIO JAVA WEB APP</title>
+</h:head>
+
+<h:body>
+	<h:form id="menu-form">
+		<p:growl id="msgs" showDetail="true" sticky="true" />
+		<br />
+		<br />
+		<p:panel header="User Infomation Portfolio">
+
+			<br />
+			<h:outputText
+				value="Please select one of the profiles availables from the data source by clicking any row table. Once a profile is selected the click on enabled button to view the profile details:  ">
+			</h:outputText>
+			<br />
+			<br />
+			<br />
+
+			<p:dataTable id="tableProfiles" value="#{portfolioView.portfolios}"
+				var="ps" selectionMode="single"
+				selection="#{portfolioView.portfolioSelected}"
+				rowKey="#{ps.idportfolio}" resizableColumns="true"  scrollable="true" scrollHeight="405"
+				style="margin-bottom:20px" tableStyle="table-layout: auto;">
+
+				<p:ajax event="rowSelect" update="viewDetailPortfolio" />
+				<p:ajax event="rowUnselect" update="viewDetailPortfolio" />
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ps.idportfolio}" />
+				</p:column>
+				<p:column headerText="Title">
+					<h:outputText value="#{ps.title}" />
+				</p:column>
+				<p:column headerText="Twitter">
+					<h:outputText value="#{ps.twitterUserName}" />
+				</p:column>
+
+				<f:facet name="header">
+					<p:commandButton id="viewDetailPortfolio" icon="ui-icon-zoomin"
+						value="View selected profile"
+						disabled="#{empty portfolioView.portfolioSelected}"
+						action="#{portfolioView.viewDetailSelectedPortfolio}"
+						update=":menu-form:msgs" />
+				</f:facet>
+			</p:dataTable>
+			<br />
+			<br />
+		</p:panel>
+		<br />
+		<h:outputText value="Autor: Jorge Dominguez"
+			style="font-size:12.5px; float:right;" />
+		<br />
+	</h:form>
+</h:body>
+</html>

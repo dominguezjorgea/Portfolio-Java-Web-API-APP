@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+<h:head>
+	<title>PORTFOLIO JAVA WEB APP</title>
+</h:head>
+
+<h:body>
+	<h:form id="menu-form">
+		<p:growl id="msgs" showDetail="true" sticky="true" />
+		<br />
+		<br />
+		<p:panel header="User Infomation Profile" style="width: auto;">
+			<br />
+			<br />
+			<img src="#{portfolioView.portfolioQueried.imageUrl}" height="300px"
+				width="300px"
+				style="display: block; margin-left: auto; margin-right: auto;" />
+			
+			<br />
+			<br />
+			<br />
+			<p:panelGrid columns="2" style="margin: 0 auto;">
+				<h:outputText value="Name:" style="font-size:30px;"/>
+				<h:outputText value="#{portfolioView.portfolioQueried.title}" style="font-size:30px;"/>
+				<h:outputText value="Twitter:" style="font-size:30px;" />
+				<h:outputText
+					value="#{portfolioView.portfolioQueried.twitterUserName}" style="font-size:30px;"/>
+				<h:outputText value="Description:" style="font-size:30px;"/>
+				<h:outputText value="#{portfolioView.portfolioQueried.description}" style="font-size:30px;"/>
+			</p:panelGrid>
+		</p:panel>
+		<p:panel header="Twitter Time Line" style="width: auto;">
+			<p:dataTable id="twitts-table" var="twitt" value="#{portfolioView.twittersTimeLine}" scrollRows="50" scrollable="true" liveScroll="true" scrollHeight="150">
+				<p:column>
+	  				<h:outputText value="#{twitt}"/>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+		<br />
+		<br />
+		<p:commandButton id="backButton" value="Back" action="#{portfolioView.refreshPortfolios}" style="float:left;"/>
+		<br />
+		<h:outputText value="Autor: Jorge Dominguez" style="font-size:12.5px; float:right;" />
+		<br />
+	</h:form>
+</h:body>
+
+</html>
+
+
+
